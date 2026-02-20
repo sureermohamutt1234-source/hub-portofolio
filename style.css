@@ -26,20 +26,35 @@ body{
   width:100%;
   display:flex;
   justify-content:space-between;
+  align-items:center;
   padding:20px 10%;
   backdrop-filter:blur(15px);
   background:rgba(0,0,0,0.3);
   z-index:1000;
   transition: all 0.5s ease;
 }
-.header.scrolled{background:rgba(0,0,0,0.6);}
+
+/* Desktop nav links */
+.header nav{
+  display:flex;
+  gap:20px;
+}
+
 .header nav a{
-  margin-left:20px;
   text-decoration:none;
   color:white;
   transition: color 0.3s ease;
 }
+
 .header nav a:hover{color:#3b82f6;}
+
+/* Hamburger icon */
+.menu-toggle{
+  display:none;
+  font-size:2rem;
+  cursor:pointer;
+  z-index:1100;
+}
 
 /*==================== Hero ====================*/
 .hero{
@@ -48,7 +63,9 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
+  padding-top:80px;
 }
+
 .hero-content{
   display:flex;
   justify-content:center;
@@ -56,6 +73,7 @@ body{
   gap:50px;
   flex-wrap:wrap;
 }
+
 .hero-left{max-width:500px;}
 .hero-left h1{font-size:3rem;}
 .hero-left span{color:#3b82f6;}
@@ -65,6 +83,7 @@ body{
   font-size:1.5rem;
   height:30px;
 }
+
 .hero-buttons .btn{
   padding:12px 25px;
   margin:10px;
@@ -206,4 +225,33 @@ body{
 .reveal.active{
   opacity:1;
   transform:translateY(0);
+}
+
+/*==================== Responsive Menu ====================*/
+
+/* Hide hamburger desktop */
+.menu-toggle{display:none;}
+
+/* Hide mobile nav by default */
+.header nav{
+  transition:transform 0.4s ease;
+}
+
+/* Mobile view */
+@media(max-width:768px){
+  .menu-toggle{display:block;}
+  .header nav{
+    position:absolute;
+    top:80px;
+    right:0;
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+    background:rgba(0,0,0,0.95);
+    padding:20px 0;
+    gap:20px;
+    transform:translateY(-150%);
+  }
+  .header nav.active{transform:translateY(0);}
+  .header nav a{font-size:1.2rem;}
 }
